@@ -1,12 +1,13 @@
 import java.io.*;
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.Set;
 
 public class Main {
 
-    static String fileName = "src/main/resources/flightBookings";
+    static String fileName = Objects.requireNonNull(Main.class.getClassLoader().getResource("flightBookings")).getPath();
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
