@@ -8,6 +8,8 @@ public class Flight implements Serializable {
 
     private static List<Flight> extent = new ArrayList<>();
 
+    private static final long serialVersionUID = -1089169310081912521L;
+
     private String flightNumber;
     private LocalDateTime departureDate;
     private LocalDateTime arrivalDate;

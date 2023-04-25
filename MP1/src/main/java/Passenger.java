@@ -2,6 +2,8 @@ import java.io.Serializable;
 
 public class Passenger implements Serializable {
 
+    private static final long serialVersionUID = 7777695709816246107L;
+
     private String name;
     private String surname;
     private String phoneNumber = null;

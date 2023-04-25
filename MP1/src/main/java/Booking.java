@@ -11,6 +11,8 @@ public class Booking implements Serializable {
 
     private static List<Booking> extent = new ArrayList<>();
 
+    private static final long serialVersionUID = -6448559927141637904L;
+
     private Set<Passenger> passengers;
     private Flight flight;
     private float price;
