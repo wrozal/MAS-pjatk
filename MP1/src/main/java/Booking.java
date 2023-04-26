@@ -1,3 +1,7 @@
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -7,8 +11,13 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+
+@Getter
+@Setter
+@ToString
 public class Booking implements Serializable {
 
+    @Getter
     private static List<Booking> extent = new ArrayList<>();
 
     private static final long serialVersionUID = -6448559927141637904L;
@@ -23,7 +32,10 @@ public class Booking implements Serializable {
         this.flight = flight;
         this.price = price;
         this.isPaid = isPaid;
+        addToExtent();
+    }
 
+    public void addToExtent() {
         extent.add(this);
     }
 
@@ -64,20 +76,6 @@ public class Booking implements Serializable {
                 .collect(Collectors.toList());
     }
 
-    @Override
-    public String toString() {
-        return String.format("Booking {\n\tpassengers=%s, \n\tflight=%s, \n\tprice=%s, \n\tisPaid=%s, \n}",
-                this.passengers, this.flight, getTotalPriceWithVAT(), this.isPaid);
-    }
-
-    public static List<Booking> getExtent() {
-        return extent;
-    }
-
-    public Set<Passenger> getPassengers() {
-        return passengers;
-    }
-
     public void setPassengers(Set<Passenger> passengers) {
         if (passengers.size() == 0) {
             try {
@@ -89,27 +87,4 @@ public class Booking implements Serializable {
         this.passengers = passengers;
     }
 
-    public Flight getFlight() {
-        return flight;
-    }
-
-    public void setFlight(Flight flight) {
-        this.flight = flight;
-    }
-
-    public float getPrice() {
-        return price;
-    }
-
-    public void setPrice(float price) {
-        this.price = price;
-    }
-
-    public boolean isPaid() {
-        return isPaid;
-    }
-
-    public void setPaid(boolean paid) {
-        isPaid = paid;
-    }
 }
