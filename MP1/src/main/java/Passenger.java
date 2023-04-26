@@ -7,6 +7,7 @@ import java.io.Serializable;
 @Setter
 @AllArgsConstructor
 @RequiredArgsConstructor
+@Builder
 public class Passenger implements Serializable {
 
     private static final long serialVersionUID = 7777695709816246107L;

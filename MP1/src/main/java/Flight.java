@@ -1,6 +1,7 @@
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.Builder;
 
 import java.io.Serializable;
 import java.time.Duration;
@@ -12,6 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
+@Builder
 public class Flight implements Serializable {
 
     @Getter

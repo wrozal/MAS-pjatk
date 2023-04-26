@@ -97,81 +97,91 @@ public class Main {
     }
 
     public static void createBookings() {
-        new Booking(
-                Set.of(
-                        new Passenger(
-                                "Sofia",
-                                "Martinez",
-                                "555-123-456",
-                                "sofia.martinez@gmail.com"
-                        )
-                ),
-                new Flight(
-                        "AB123",
-                        LocalDateTime.of(2023, Month.MAY, 21, 10, 35),
-                        LocalDateTime.of(2023, Month.MAY, 21, 18, 25),
-                        "London",
-                        "New York"
-                ),
-                1950,
-                false
-        );
+        Booking.builder()
+                .passengers(Set.of(
+                        Passenger.builder()
+                                .name("Sofia")
+                                .surname("Martinez")
+                                .phoneNumber("555-123-456")
+                                .email("sofia.martinez@gmail.com")
+                                .build()
+                ))
+                .flight(Flight.builder()
+                        .flightNumber("AB123")
+                        .departureDate(LocalDateTime.of(2023, Month.MAY, 21, 10, 35))
+                        .arrivalDate(LocalDateTime.of(2023, Month.MAY, 21, 18, 25))
+                        .departurePoint("London")
+                        .arrivalPoint("New York")
+                        .build()
+                )
+                .price(1950)
+                .isPaid(false)
+                .build();
 
-        new Booking(
-                Set.of(
-                        new Passenger(
-                                "John",
-                                "Smith",
-                                "john.smith@gmail.com"
-                        )),
-                new Flight(
-                        "CD420",
-                        LocalDateTime.of(2023, Month.MAY, 27, 9, 0),
-                        LocalDateTime.of(2023, Month.MAY, 27, 22, 35),
-                        "Paris",
-                        "Tokyo"
-                ),
-                4460,
-                true
-        );
 
-        new Booking(
-                Set.of(
-                        new Passenger(
-                                "Maria",
-                                "Rodriguez",
-                                "555-345-987",
-                                "maria.rodriguez@gmail.com"
-                        )),
-                new Flight(
-                        "EF755",
-                        LocalDateTime.of(2023, Month.JUNE, 1, 14, 20),
-                        LocalDateTime.of(2023, Month.JUNE, 1, 20, 35),
-                        "New York",
-                        "Los Angeles"
-                ),
-                810,
-                true
-        );
+        Booking.builder()
+                .passengers(Set.of(
+                        Passenger.builder()
+                                .name("John")
+                                .surname("Smith")
+                                .email("john.smith@gmail.com")
+                                .build()
+                ))
+                .flight(Flight.builder()
+                        .flightNumber("CD421")
+                        .departureDate(LocalDateTime.of(2023, Month.MAY, 27, 9, 0))
+                        .arrivalDate(LocalDateTime.of(2023, Month.MAY, 27, 22, 35))
+                        .departurePoint("Paris")
+                        .arrivalPoint("Tokyo")
+                        .build()
+                )
+                .price(4460)
+                .isPaid(true)
+                .build();
 
-        new Booking(
-                Set.of(
-                        new Passenger(
-                                "James",
-                                "Wilson",
-                                "555-333-111",
-                                "james.wilson@gmail.com"
-                        )),
-                new Flight(
-                        "GH135",
-                        LocalDateTime.of(2023, Month.JUNE, 1, 20, 0),
-                        LocalDateTime.of(2023, Month.JUNE, 2, 19, 0),
-                        "Sydney",
-                        "Warsaw"
-                ),
-                7000,
-                false
-        );
+
+        Booking.builder()
+                .passengers(Set.of(
+                        Passenger.builder()
+                                .name("Maria")
+                                .surname("Rodriguez")
+                                .phoneNumber("555-345-987")
+                                .email("maria.rodriguez@gmail.com")
+                                .build()
+                ))
+                .flight(Flight.builder()
+                        .flightNumber("EF755")
+                        .departureDate(LocalDateTime.of(2023, Month.JUNE, 1, 14, 20))
+                        .arrivalDate(LocalDateTime.of(2023, Month.JUNE, 1, 20, 35))
+                        .departurePoint("New York")
+                        .arrivalPoint("Los Angeles")
+                        .build()
+                )
+                .price(810)
+                .isPaid(true)
+                .build();
+
+
+        Booking.builder()
+                .passengers(Set.of(
+                        Passenger.builder()
+                                .name("James")
+                                .surname("Wilson")
+                                .phoneNumber("555-333-111")
+                                .email("james.wilson@gmail.com")
+                                .build()
+                ))
+                .flight(Flight.builder()
+                        .flightNumber("GH135")
+                        .departureDate(LocalDateTime.of(2023, Month.JUNE, 1, 20, 0))
+                        .arrivalDate(LocalDateTime.of(2023, Month.JUNE, 2, 19, 0))
+                        .departurePoint("Sydney")
+                        .arrivalPoint("Warsaw")
+                        .build()
+                )
+                .price(7000)
+                .isPaid(false)
+                .build();
     }
 
 }

@@ -1,6 +1,7 @@
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.Builder;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @ToString
+@Builder
 public class Booking implements Serializable {
 
     @Getter
