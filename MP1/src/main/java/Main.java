@@ -1,4 +1,5 @@
 import java.io.*;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.Objects;
@@ -114,7 +115,7 @@ public class Main {
                         .arrivalPoint("New York")
                         .build()
                 )
-                .price(1950)
+                .price(BigDecimal.valueOf(1950))
                 .isPaid(false)
                 .build();
 
@@ -135,7 +136,7 @@ public class Main {
                         .arrivalPoint("Tokyo")
                         .build()
                 )
-                .price(4460)
+                .price(BigDecimal.valueOf(4460))
                 .isPaid(true)
                 .build();
 
@@ -157,7 +158,7 @@ public class Main {
                         .arrivalPoint("Los Angeles")
                         .build()
                 )
-                .price(810)
+                .price(BigDecimal.valueOf(810))
                 .isPaid(true)
                 .build();
 
@@ -179,7 +180,7 @@ public class Main {
                         .arrivalPoint("Warsaw")
                         .build()
                 )
-                .price(7000)
+                .price(BigDecimal.valueOf(7000))
                 .isPaid(false)
                 .build();
     }

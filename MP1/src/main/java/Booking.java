@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -26,10 +28,10 @@ public class Booking implements Serializable {
 
     private Set<Passenger> passengers;
     private Flight flight;
-    private float price;
+    private BigDecimal price;
     private boolean isPaid;
 
-    public Booking(Set<Passenger> passengers, Flight flight, float price, boolean isPaid) {
+    public Booking(Set<Passenger> passengers, Flight flight, BigDecimal price, boolean isPaid) {
         setPassengers(passengers);
         this.flight = flight;
         this.price = price;
@@ -57,19 +59,26 @@ public class Booking implements Serializable {
         }
     }
 
-    public float getTotalPriceWithVAT() {
-        return passengers.size() * price * 1.23f;
+    public BigDecimal getTotalPriceWithVAT() {
+        return BigDecimal.valueOf(passengers.size())
+                .multiply(price)
+                .multiply(BigDecimal.valueOf(1.23));
     }
 
-    public float getTotalPriceWithVAT(float vat) {
-        return passengers.size() * price * vat;
+    public BigDecimal getTotalPriceWithVAT(BigDecimal vat) {
+        return BigDecimal.valueOf(passengers.size())
+                .multiply(price)
+                .multiply(vat);
     }
 
-    public static float getAveragePrice() {
-        return (float) extent.stream()
-                .mapToDouble(Booking::getTotalPriceWithVAT)
-                .average()
-                .orElse(0d);
+    public static BigDecimal getAveragePrice() {
+        if (extent.isEmpty()) {
+            return BigDecimal.ZERO;
+        }
+        return extent.stream()
+                .map(Booking::getTotalPriceWithVAT)
+                .reduce(BigDecimal.ZERO, BigDecimal::add)
+                .divide(BigDecimal.valueOf(extent.size()), 2, RoundingMode.HALF_UP);
     }
 
     public static List<Booking> getOnlyPaidBookings() {
